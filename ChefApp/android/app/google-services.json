@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "805461914709",
+    "project_id": "chefapp-bcada",
+    "storage_bucket": "chefapp-bcada.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805461914709:android:2a5dfafd98a205236610dc",
+        "android_client_info": {
+          "package_name": "com.example.chefapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805461914709-075rv2th0s758la7ej8cbfhtpcduol1a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chefapp",
+            "certificate_hash": "7226642016716f8f80110f8d3e42b65410ce5ab6"
+          }
+        },
+        {
+          "client_id": "805461914709-22vvh8b7m0ohcivhjccvuabpoo3kjsiv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOiH5i6-xU4cqvaW9AaTs0MMNBEJh-X6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805461914709-22vvh8b7m0ohcivhjccvuabpoo3kjsiv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "805461914709-ip13a7rajhpp1bt5acjad2vjvqvmf8p8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chefapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,22 @@
+Estrutura dos ficheiros 
+-> features 
+	-> auth 
+		-> screens: Interface da autenticação
+		-> repository: chamadas para a base de dados
+		-> controller: mensageiro entre o screen e repositorio 
+
+
+---------------------------
+Tratar da interface 
+Lembrar que tens o ligt mode e o darkmode entao o icon que estas a usar não da para o darkmode 
+
+
+
+
+
+
+
+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 
+
+
+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
