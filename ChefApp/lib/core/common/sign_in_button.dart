@@ -1,17 +1,23 @@
+import 'package:chefapp/features/auth/controleer/auth_controller.dart';
 import 'package:chefapp/theme/pallete.dart';
 import 'package:flutter/material.dart';
 import 'package:chefapp/core/constants/constants.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
-class SignInButton extends StatelessWidget {
+class SignInButton extends ConsumerWidget {
   const SignInButton({super.key});
 
+  void signInWithGoogle(WidgetRef ref){
+    ref.read(authControllerProvider).signInWithGoogle();
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: ElevatedButton.icon(
-      onPressed: () {},
+      onPressed: () => signInWithGoogle(ref),
       icon: Image.asset(Constants.googlePath, width: 35 ,),
       label: const Text('Continue with google', style: TextStyle(fontSize: 18),
       ),
@@ -22,7 +28,7 @@ class SignInButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),      
       )
       )
-      ),
+      ), 
     );
   }
 }
