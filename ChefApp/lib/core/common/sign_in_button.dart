@@ -5,10 +5,10 @@ import 'package:chefapp/core/constants/constants.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
-class SignInButton extends ConsumerWidget {
+class SignInButton extends ConsumerWidget { // consumerWidget é tipo stateless a diferença é que adiciona um provider
   const SignInButton({super.key});
 
-  void signInWithGoogle(WidgetRef ref){
+  void signInWithGoogle(WidgetRef ref){  // WidgetRef -> esta associado ao providerscope, forma de aceder aos dados do provider
     ref.read(authControllerProvider).signInWithGoogle();
   }
 

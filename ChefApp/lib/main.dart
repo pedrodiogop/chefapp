@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async{
-  WidgetsFlutterBinding.ensureInitialized(); 
-  await Firebase.initializeApp(
+  WidgetsFlutterBinding.ensureInitialized(); // ligar o flutter as plataformas android e ios
+  await Firebase.initializeApp( // inicializa a firebase sdk 
     options: DefaultFirebaseOptions.currentPlatform,
 );
-  runApp(const ProviderScope(child:  MyApp()));
+  runApp(const ProviderScope(child:  MyApp())); // para dar mos uso ao riverpod
 }
 
 class MyApp extends StatelessWidget {
@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Chef App',
-      theme: Pallete.lightModeAppTheme,
-      home: const LoginScreen(),
+      theme: Pallete.lightModeAppTheme, // cores da aplicaçao 
+      home: const LoginScreen(), // para onde navega
     );
   }
 }
