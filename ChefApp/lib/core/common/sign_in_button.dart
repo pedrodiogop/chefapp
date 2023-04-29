@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:chefapp/core/constants/constants.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
+// ConsumerWidget -> conseguimos aceder a um provider que esta dentro de um classe 
 class SignInButton extends ConsumerWidget { // consumerWidget é tipo stateless a diferença é que adiciona um provider
   const SignInButton({super.key});
 
-  void signInWithGoogle(WidgetRef ref){  // WidgetRef -> esta associado ao providerscope, forma de aceder aos dados do provider
-    ref.read(authControllerProvider).signInWithGoogle();
+    signInWithGoogle(BuildContext context,WidgetRef ref){  // WidgetRef -> esta associado ao providerscope(main.dart), forma de aceder aos dados do provider
+    ref.read(authControllerProvider.notifier).signInWithGoogle(context);
   }
 
   @override
@@ -17,7 +17,7 @@ class SignInButton extends ConsumerWidget { // consumerWidget é tipo stateless 
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: ElevatedButton.icon(
-      onPressed: () => signInWithGoogle(ref),
+      onPressed: () => signInWithGoogle(context, ref),
       icon: Image.asset(Constants.googlePath, width: 35 ,),
       label: const Text('Continue with google', style: TextStyle(fontSize: 18),
       ),

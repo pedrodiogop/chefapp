@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 
 
 // final -> nao vao mudar de valor depois de serem associados
+// estes sao os parametros do utilizador quando ele faz o registo, se quiseres adicionar mais parametros na coleçao "users" aumentas o numero de variaveis 
 class UserModel {
   final String name;
   final String profilePic;
@@ -19,7 +20,7 @@ class UserModel {
     required this.uid,
     required this.isAuthenticated,
   });
-
+  
 
 
   // userModel.name = ''; nao podemos fazer iso

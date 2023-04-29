@@ -8,6 +8,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+// damos o valor de providers as varaiveis, no codigo se usarmos estas variaveis estamos a aceder a uma instancia da firebase
 final firestoreProvider = Provider((ref) => FirebaseFirestore.instance ) ;
 final authProvider = Provider((ref) => FirebaseAuth.instance ) ;
 final storageProvider = Provider((ref) => FirebaseStorage.instance) ;

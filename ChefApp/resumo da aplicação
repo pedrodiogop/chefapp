@@ -1,6 +1,40 @@
 resumo da aplicação 
 
+
+main.dart 
+A função principal inicializa o SDK Firebase e Riverpod, e então executa o widget MyApp como raiz do aplicativo. O widget MaterialApp define o tema geral e rotas padrão para o aplicativo. A propriedade home é definida como o widget LoginScreen, que é a primeira tela que o usuário verá após iniciar o aplicativo.
+
+login_screen.dart 
+tela onde é mostrado o butao para fazer login ou sign in. Tela onde é mostrado o butao "skip" para fazer login sem estar registado
+
+sign_in_button.dart
+
+auth_repository.dart
+tens a função signInWithGoogle(), nesta função o utilizador é autenticado e é criado uma coleçao para o usuario 
+
+(...)
+
+firebase_constants.dart 
+onde definimos o nome das nossas coleçoes da firebase 
+
+
+(Continuar..)
+
 Shift + Alt + F // posicionar a sintaxe do texto
+
+Estrutura dos ficheiros 
+-> features 
+	-> auth 
+		-> screens: Interface da autenticação
+		-> repository: chamadas para a base de dados
+		-> controller: mensageiro entre o screen e repositorio 
+
+
+---------------------------
+Tratar da interface 
+Lembrar que tens o ligt mode e o darkmode entao o icon que estas a usar não da para o darkmode 
+
+
 
 Propriedades do utilizador para base de dados:
 // adicionar karma(talvez um algortimo de recomendação para os utilizadores que o seguem) 
@@ -8,3 +42,8 @@ Propriedades do utilizador para base de dados:
 -> id
 -> foto
 -> nacionalidade
+
+
+--------
+-> guardamos os dados no provider entao nao temos de estar sempre a fazer chamadas a base de dados 
+

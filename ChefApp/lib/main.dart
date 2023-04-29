@@ -4,6 +4,8 @@ import 'package:chefapp/theme/pallete.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:routemaster/routemaster.dart';
+import 'package:chefapp/route.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized(); // ligar o flutter as plataformas android e ios
@@ -19,11 +21,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Chef App',
       theme: Pallete.lightModeAppTheme, // cores da aplicaçao 
-      home: const LoginScreen(), // para onde navega
+      routerDelegate: RoutemasterDelegate(routesBuilder: (context) => loggedOutRoute),
+      routeInformationParser: const RoutemasterParser(),
+      //home: const LoginScreen(), // para onde navega
     );
   }
 }
