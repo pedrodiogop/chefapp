@@ -1,0 +1,80 @@
+relação com a base de dados
+
+
+coleção 
+
+Users
+	banner
+	isAuthenticated
+	name
+	profilePic
+	uid
+	descricao
+	guardados: [uid_da_receita]
+	Receitas	
+		count_receitas			
+		uid_da_receita: [blabla,..]
+	data_da_ultima_receita(ordem decrescente para o screen CHefs)
+
+	
+
+
+Receita
+	uid_da_receita
+		uid_da_receita
+		foto
+		name
+		uid
+		profilePic
+		date ( Ajudar na Pagina de Publicação, e no Perfil)
+		tempo
+		calorias
+		ingredientes
+		como fazer
+		refeição[pequeno almoço,...]
+		categoria[carne,...]
+		Likes
+				countlikes
+				Users
+					uid 
+						name
+						Profilefoto
+
+
+Seguidores 
+	uid_ususario
+		countseguidores
+		Users
+			uid 
+				name
+				Profilefoto
+		 
+
+A seguir 
+	 uid_ususario
+	 	counta seguir
+	 	seguido 
+	 	Users
+			uid 
+				name
+				Profilefoto
+		
+
+
+Gostos
+	uid_ususario
+		count gostos
+		gostos
+		gostos
+
+
+Sugestao 
+	Ramdom
+		sugestao 
+		likes
+		uid
+		nome_usuario(tem de mudar qunando o utlizador edita prefil)
+		profilepic(tem de mudar qunando o utlizador edita prefil)
+
+
+

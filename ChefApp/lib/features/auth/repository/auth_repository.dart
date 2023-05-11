@@ -37,6 +37,9 @@ class AuthRepository {
   // retorna uma referencia a coleçao "users" que é usado para salvar informações do usuario 
   CollectionReference get _users => _firestore.collection(FirebaseConstants.usersCollection);
 
+  // por causa do log in log out 
+  Stream<User?> get authStateChange => _auth.authStateChanges();
+
   // Future -> muito associado ao "async". 
   // Future -> Uma função que tenhas de esperar por um servidor ou um web 
   //Either(dependencia fpdart)  <String, UserModel> -> tipo do falhanço e tipo do sucesso

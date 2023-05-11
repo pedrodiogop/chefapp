@@ -1,0 +1,9 @@
+Definiçoes das atribuiçõs flutter 
+
+const -> definir uma constante em tempo de compilaçao 
+final -> definir uma constante em tempo de execução 
+?? -> serve para se o que vem antes nao existir entao o que vem depois do "??" ser efetuado
+async -> para uma função ser executada em segundo plano
+await -> serve para esperar que a linha de codigo seja totalmetne processada, para deois executar as linhas de codigo abaixo que normalmente dependem dela.
+
+Uma nova wiget esta associado com um Buildcontext context o que da a localização deste widget a arvore de wiget. existem alguns wigets que nao tem "context" neste caso temos que dar "wrap builder" e é criado um context para eles.
