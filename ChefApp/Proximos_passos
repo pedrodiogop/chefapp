@@ -4,9 +4,8 @@ Estou a passar os screens de refeições categorias e chefs
 
 
 Tar atento ao video 
--> sugestoes : da me erro porque a partir de do provider de sugestoes tenho de ir buscar um certo perfil e quando façõ esta relação os dados do provider perfil chegam tarde a aplicação o qu significa que o user.name = null na primeira interação 
-
-
+-> no homescreen preciso de mudar o scrool dos chefs (para isto tenho de fazer mais login com outros emials)
+-> nos screens de mostrar receitas nao posso avançar poruqe nao tenho receitas em que posso dar display
 
 
 

@@ -10,130 +10,149 @@ class RowScroolCategorias extends StatefulWidget {
 }
 
 class _RowScroolCategoriasState extends State<RowScroolCategorias> {
+  String selectedText = '';
   List<CardItem> items = [
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Gym',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Vegan',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Carne',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Peixe',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Arroz',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Massas',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Fit',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Legumes',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Salada',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Fit',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Pizza',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Gelados',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Sem Gluten',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Sushi',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Kebab',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Bolacha',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Chocolate',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Pão',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
@@ -141,11 +160,11 @@ class _RowScroolCategoriasState extends State<RowScroolCategorias> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: ListView.separated(
           padding: const EdgeInsets.all(16),
-          itemBuilder: (context, index) => buildCard(items: items[index],containerWidth: 200,textfont: 20,),
+          itemBuilder: (context, index) => buildCard(items: items[index],containerWidth: 200,textfont: 20,context:context,textfontabaixo: 9,selectedText: selectedText),
           separatorBuilder: (context, _) => const SizedBox(width: 12),
           itemCount: 18,
           scrollDirection: Axis.horizontal),

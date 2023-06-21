@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:chefapp/features/myappar/myappbar.dart';
-import 'package:chefapp/features/drawwer/drawer.dart';
 import 'package:chefapp/features/rowscrool/row_scrool_categorias.dart';
 import 'package:chefapp/features/rowscrool/row_filtors.dart';
 
@@ -17,8 +15,7 @@ class _CategoriasState extends State<Categorias> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    appBar: MyAppBar('Categorias'),
-      drawer: const Drawwer(),
+    appBar: AppBar(title: const Text('Categorias')),
       body: SingleChildScrollView(
           child: Column(
         children: const [

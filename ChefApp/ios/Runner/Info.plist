@@ -58,5 +58,7 @@
 		</array>
 	</dict>
 </array>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Selecione uma foto da galeria para colocar como seu banner de perfil</string>
 </dict>
 </plist>

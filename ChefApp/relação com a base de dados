@@ -4,68 +4,46 @@ relação com a base de dados
 coleção 
 
 Users
-	banner
-	isAuthenticated
-	name
-	profilePic
 	uid
-	descricao
-	guardados: [uid_da_receita]
-	Receitas	
-		count_receitas			
-		uid_da_receita: [blabla,..]
-	data_da_ultima_receita(ordem decrescente para o screen CHefs)
-
-	
-
+		banner
+		isAuthenticated
+		name
+		profilePic
+		descricao
+		data_da_ultima_receita(ordem decrescente para o screen CHefs)
+		aseguir: [uid_users]
+		seguidores: [uid_users,...,...]
+		gostos -> é possivel obter a partir da coleçao receita
+		//uid_das_receita: [blabla,..]
+		// colocar gostos se quiseres
+		//Receitas	
+			//count_receitas			
+			//uid_das_receita: [blabla,..]
+		
 
 Receita
-	uid_da_receita
-		uid_da_receita
+	id_da_receita
+		id_da_receita
 		foto
-		name
-		uid
-		profilePic
-		date ( Ajudar na Pagina de Publicação, e no Perfil)
+		nome_da_receita
+		uid_do_usuario
 		tempo
 		calorias
 		ingredientes
 		como fazer
 		refeição[pequeno almoço,...]
 		categoria[carne,...]
-		Likes
-				countlikes
-				Users
-					uid 
-						name
-						Profilefoto
-
-
-Seguidores 
-	uid_ususario
-		countseguidores
-		Users
-			uid 
-				name
-				Profilefoto
-		 
-
-A seguir 
-	 uid_ususario
-	 	counta seguir
-	 	seguido 
-	 	Users
-			uid 
-				name
-				Profilefoto
-		
-
-
-Gostos
-	uid_ususario
-		count gostos
-		gostos
-		gostos
+		likes : [uid_users]
+		date ( Ajudar na Pagina de Publicação, e no Perfil)
+		countcomments
+		preço // esquecime
+		guardados
+		//Likes
+		//		countlikes
+		//		Users
+		//			uid 
+		//				name
+		//				Profilefoto
 
 
 Sugestao 
@@ -73,8 +51,38 @@ Sugestao
 		sugestao 
 		likes
 		uid
-		nome_usuario(tem de mudar qunando o utlizador edita prefil)
-		profilepic(tem de mudar qunando o utlizador edita prefil)
+
+
+Guardados
+	random
+		cout
+		id_receita
+		uid_usuario
+		random
+
+
+
+
+//Seguidores 
+//	uid_ususario
+//			[uid_users,...,...]
+
+		//countseguidores
+		//Users
+		//	uid 
+		//		name
+		//		Profilefoto
+		 
+
+//A seguir 
+//	 uid_ususario
+//	 	counta seguir
+//	 	seguido 
+//	 	Users
+//			uid 
+//				name
+//				Profilefoto
+	
 
 
 

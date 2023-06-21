@@ -10,46 +10,53 @@ class RowScroolChef extends StatefulWidget {
 }
 
 class _RowScroolChefState extends State<RowScroolChef> {
+  String selectedText='';
   List<CardItem> items = [
     CardItem(
+    text: '',
       image: Constants.pequenoalmoco,
       title: 'Pequeno Almoço',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Almoço/Jantar',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Lanche',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Ceia',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Bebidas',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
     CardItem(
+      text: '',
       image: Constants.pequenoalmoco,
       title: 'Sobremesa',
-      onTap: () {
+      onTap: (context) {
         // Navegar para um widget específico
       },
     ),
@@ -57,11 +64,11 @@ class _RowScroolChefState extends State<RowScroolChef> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: ListView.separated(
           padding: const EdgeInsets.all(16),
-          itemBuilder: (context, index) => buildCard(items: items[index],containerWidth: 200,textfont: 20,),
+          itemBuilder: (context, index) => buildCard(items: items[index],containerWidth: 200,textfont: 20,context: context,textfontabaixo: 9,selectedText:selectedText),
           separatorBuilder: (context, _) => const SizedBox(width: 12),
           itemCount: 6,
           scrollDirection: Axis.horizontal),

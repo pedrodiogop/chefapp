@@ -53,19 +53,22 @@ class _MyAppState extends ConsumerState<MyApp> {
             //theme: Pallete.lightModeAppTheme, // cores da aplicaçao
             routerDelegate: RoutemasterDelegate(
               routesBuilder: (context) {
+                //print('antes de entrar no if');
                 if (data != null) {
+  //print('dentro do if');
                     getData(ref, data);
                     if(userModel != null){
                       return loggedInRoute;
                     }
                 }
+               // print('fora do if');
                 return loggedOutRoute;
               },
             ),
             routeInformationParser: const RoutemasterParser(),
             //home: const LoginScreen(), // para onde navega
           ),
-          error: (error, StackTrace) => ErrorText(error: error.toString()),
+          error: (error, stackTrace) => ErrorText(error: error.toString()),
           loading: () => const Loader(),
         );
   }

@@ -2,6 +2,7 @@
 class FirebaseConstants {
   static const usersCollection = 'users';
   static const sugestoesColletion = 'sugestoes';
-  static const postsCollection = 'posts';
+  static const receitasCollection = 'receitas';
   static const commentsCollection = 'comments';
+    static const guardadosCollection = 'guardados';
 } 

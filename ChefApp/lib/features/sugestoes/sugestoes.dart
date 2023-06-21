@@ -14,7 +14,7 @@ class Sugestao extends ConsumerStatefulWidget {
 class _SugestaoState extends ConsumerState<Sugestao> {
   String _suggestion = "";
   void _submitSuggestion() {
-    createCommunity();
+    createSugestao();
     setState(() {
       _suggestion = "";
     });
@@ -23,7 +23,7 @@ class _SugestaoState extends ConsumerState<Sugestao> {
    //print(pop);
   }
 
-  void createCommunity() {
+  void createSugestao() {
     ref
         .read(sugestaoControllerProvider.notifier)
         .createSugestao(_suggestion, context);
