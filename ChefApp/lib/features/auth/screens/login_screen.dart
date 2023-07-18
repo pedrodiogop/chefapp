@@ -2,7 +2,7 @@ import 'package:chefapp/core/common/loader.dart';
 import 'package:chefapp/features/auth/controleer/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:chefapp/core/constants/constants.dart';
-import 'package:chefapp/core/common/sign_in_button.dart';
+import 'package:chefapp/features/auth/screens/sign_in_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoginScreen extends ConsumerWidget {

@@ -165,21 +165,6 @@ class ReceitaRepository {
     });
   }
 
-//  Stream<List<Receita>> getReceitasRefeicao(
-//      String tipo, int maxPreco, int minLikes, int maxCalorias) {
-//    return _receitas
-//        .where('tipo', isEqualTo: tipo)
-//        .where('preco', isLessThan: maxPreco)
-//        .where('likes', isGreaterThanOrEqualTo: minLikes)
-//        .where('calorias', isGreaterThanOrEqualTo: maxCalorias)
-//        .snapshots()
-//        .map(
-//          (event) => event.docs
-//              .map((e) => Receita.fromMap(e.data() as Map<String, dynamic>))
-//              .toList(),
-//        );
-//  }
-
   Stream<List<Receita>> getReceitasRefeicao(
       String tipo, int maxPreco, int minLikes, int maxCalorias, int maxtempo) {
     return _receitas.where('refeicoes', arrayContains: tipo).snapshots().map(
@@ -212,6 +197,29 @@ class ReceitaRepository {
         );
   }
 
+    Stream<List<Receita>> getReceitasCategorias(
+      String tipo, int maxPreco, int minLikes, int maxCalorias, int maxtempo) {
+    return _receitas.where('categorias', arrayContains: tipo).snapshots().map(
+          (event) => event.docs
+              .map((e) => Receita.fromMap(e.data() as Map<String, dynamic>))
+              .where((receita) {
+            // print(receita);
+            // Convertendo os campos para tipos numéricos
+            final preco = int.tryParse(receita.preco);
+            final calorias = int.tryParse(receita.calorias);
+            final tempo = int.tryParse(receita.tempo);
+            return preco != null &&
+                calorias != null &&
+                tempo != null &&
+                tempo < maxtempo &&
+                preco < maxPreco &&
+                receita.likes.length >= minLikes &&
+                calorias < maxCalorias;
+          }).toList(),
+        );
+  }
+
+
   Stream<List<Receita>> getReceitaMaisLikes() {
     return _receitas.orderBy('likes', descending: true).snapshots().map(
           (event) => event.docs
@@ -226,27 +234,6 @@ class ReceitaRepository {
         (userSnapshot.data() as Map<String, dynamic>)['seguidores'];
     return data;
   }
-
-  //Stream<List<Receita>?> getAllReceitasaseguir(String uid) {
-  //  return _receitas
-  //      .orderBy('datacriacao', descending: true)
-  //      .snapshots()
-  //      .asyncMap((event) async {
-  //    // Converter para o modelo Receita
-  //    List<Receita> receitas = event.docs
-  //        .map((e) => Receita.fromMap(e.data() as Map<String, dynamic>))
-  //        .toList();
-  //    // Obter os dados do usuário
-  //    DocumentSnapshot userSnapshot = await _users.doc(uid).get();
-  //    List<String>? userSeguidores =
-  //        (userSnapshot.data() as Map<String, dynamic>)['aseguir']
-  //            ?.cast<String>();
-  //    List<Receita> receitasSeguidores = receitas.where((receita) {
-  //      return userSeguidores!.contains(receita.uidusuario);
-  //    }).toList();
-  //    return receitasSeguidores;
-  //  });
-  //}
 
 Stream<List<Receita>?> getAllReceitasaseguir(String uid) {
   return _users.doc(uid).snapshots().asyncMap((userSnapshot) async {

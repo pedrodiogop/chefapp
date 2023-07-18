@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
-
 import '../../core/common/error.dart';
 import '../../core/common/loader.dart';
 import '../perfil/perfil_controler/perfil_controler.dart';
@@ -14,19 +13,14 @@ class Chefs extends ConsumerWidget {
     Routemaster.of(context).push('/perfil/$uid');
   }
 
-//getNumeroDeReceitasProvider
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Dados do perfil (exemplo)
-    //String profileImage = '';
-
-
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Chefs'),
       ),
-      body: ref.watch(getAllUsersProvider(ref)).when( // ordenados pela data da utima receita
+      body: ref.watch(getAllUsersProvider(ref)).when(
+            // ordenados pela data da utima receita
             data: (data) {
               return ListView.builder(
                 itemCount: data.length,
@@ -38,25 +32,34 @@ class Chefs extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Consumer(
-                      builder: (context, ref, _) {
-                        final postCount = ref.watch(getNumeroDeReceitasProvider(user.uid)).asData?.value ?? 0;
-                  final likeCount = ref.watch(getLikesUsuarioProvider(user.uid)).asData?.value ?? 0;
-                       return  GestureDetector(
-                          onTap: () {
-                            navigateToUserProfile(context, user.uid);
+                          builder: (context, ref, _) {
+                            final postCount = ref
+                                    .watch(
+                                        getNumeroDeReceitasProvider(user.uid))
+                                    .asData
+                                    ?.value ??
+                                0;
+                            final likeCount = ref
+                                    .watch(getLikesUsuarioProvider(user.uid))
+                                    .asData
+                                    ?.value ??
+                                0;
+                            return GestureDetector(
+                              onTap: () {
+                                navigateToUserProfile(context, user.uid);
+                              },
+                              child: RetanguloInfoChef(
+                                banner: user.banner,
+                                profileImage: user.profilePic,
+                                name: user.name,
+                                description: user.descricao,
+                                postCount: postCount,
+                                likeCount: likeCount,
+                                followerCount: user.seguidores.length,
+                              ),
+                            );
                           },
-                          child: RetanguloInfoChef(
-                            banner: user.banner,
-                            profileImage: user.profilePic,
-                            name: user.name,
-                            description: user.descricao,
-                            postCount: postCount,
-                            likeCount: likeCount,
-                            followerCount: user.seguidores.length,
-                          ),
-                        );
-                       },
-                         ), 
+                        ),
                       ],
                     ),
                   );

@@ -1,9 +1,35 @@
-class Constants{
+class Constants {
   static const logoPath = 'assets/images/chef.png';
   static const googlePath = 'assets/images/google.png';
-static const bannerDefault = // futuramente mudar este banner
-      'https://thumbs.dreamstime.com/b/abstract-stained-pattern-rectangle-background-blue-sky-over-fiery-red-orange-color-modern-painting-art-watercolor-effe-texture-123047399.jpg';
-  static const avatarDefault = // futuramente mudar esta foto
-      'https://external-preview.redd.it/5kh5OreeLd85QsqYO1Xz_4XSLYwZntfjqou-8fyBFoE.png?auto=webp&s=dbdabd04c399ce9c761ff899f5d38656d1de87c2';
-        static const pequenoalmoco = 'assets/images/pequeno';
-} 
+  static const bannerDefault = 'https://thumbs.dreamstime.com/b/abstract-stained-pattern-rectangle-background-blue-sky-over-fiery-red-orange-color-modern-painting-art-watercolor-effe-texture-123047399.jpg';
+  static const avatarDefault = 'assets/images/fotoperfil.jpg';
+  static const pequenoalmoco = 'assets/images/pequeno.jpg';
+  static const lunch = 'assets/images/lunch.jpg';
+  static const lanche = 'assets/images/lanch.jpeg';
+  static const bebidas = 'assets/images/bebidas.jpg';
+  static const ceia = 'assets/images/ceia.jpg';
+  static const tempo = 'assets/images/tempo.jpg';
+  static const sobremesa = 'assets/images/sobremesa.jpg';
+  static const calorias = 'assets/images/calorias.jpg';
+  static const preco = 'assets/images/preco.jpg';
+  static const like = 'assets/images/like.png';
+  static const carne = 'assets/images/carne.jpg';
+  static const peixe = 'assets/images/peixe.jpg';
+  static const gluten = 'assets/images/gluten.jpg';
+  static const massa = 'assets/images/massas.jpg';
+  static const arroz = 'assets/images/rice.jpg';
+  static const sushi = 'assets/images/sushi.jpg';
+  static const gym = 'assets/images/gym.jpg';
+  static const vegan = 'assets/images/vegan.jpg';
+  static const legumes = 'assets/images/legumes.jpg';
+  static const salada = 'assets/images/salada.jpg';
+  static const pizza = 'assets/images/pizza.jpg';
+  static const gelados = 'assets/images/gelado.jpg';
+  static const kebab = 'assets/images/kebab.jpg';
+  static const pao = 'assets/images/pao.jpg';
+  static const chocolate = 'assets/images/chocolate.jpg';
+  static const bolacha = 'assets/images/bolacha.jpg';
+  static const chef = 'assets/images/chef.jpg';
+  static const pratomaislikes = 'assets/images/pratomaislikes.jpg';
+  static const fit = 'assets/images/fit.jpg';
+}

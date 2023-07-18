@@ -23,7 +23,7 @@ class _RowScroolEstatisticasState extends State<RowScroolEstatisticas> {
   List<CardItem> items = [
     CardItem(
       text: '',
-      image: Constants.pequenoalmoco,
+      image: Constants.pratomaislikes,
       title: 'Pratos com mais likes',
       onTap: (context) {
         navigateToPratoMaisLikes(context);      
@@ -31,7 +31,7 @@ class _RowScroolEstatisticasState extends State<RowScroolEstatisticas> {
     ),
     CardItem(
       text: '',
-      image: Constants.pequenoalmoco,
+      image: Constants.chef,
       title: 'Chefs com mais seguidores',
       onTap: (context) {
         navigateToChefMaisSeguidores(context);

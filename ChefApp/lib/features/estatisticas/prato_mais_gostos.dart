@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/common/error.dart';
 import '../../../core/common/loader.dart';
 import '../auth/controleer/auth_controller.dart';
-import '../receita/receita_screen.dart';
+import '../receita/screen/receita_screen.dart';
 import '../receita/receitas_controller/receitas_controller.dart';
 
 class PratoMaisLikes extends ConsumerWidget {

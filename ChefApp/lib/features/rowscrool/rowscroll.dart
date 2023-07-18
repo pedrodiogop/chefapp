@@ -4,14 +4,14 @@ Widget buildCard({
   required CardItem items,
   required double containerWidth,
   required double textfont,
-   double? textfontabaixo,
+  double? textfontabaixo,
   required BuildContext context,
   void Function()? onTap,
-   String? selectedText, 
-  String? selecionado,
-  bool? isSelected,
+  String? selectedText,
+  String? selecionado, 
+  bool? isSelected, // para o caso de ter sido selecionado (refeicoes e categorias)
 }) {
-  if (items.isTipo == false) {
+  if (items.isTipo == false) { // CASO NÃO SEJA DOS WIDGETS REFEICAO E CATEGORIAS 
     return SizedBox(
       width: containerWidth,
       //height: 200,
@@ -53,7 +53,7 @@ Widget buildCard({
         ],
       ),
     );
-  } else {
+  } else { // CASO SEJA DO TIPO REFEICAO E CATEGORIA
     return SizedBox(
       width: containerWidth,
       //height: 200,
@@ -73,7 +73,7 @@ Widget buildCard({
                     fit: BoxFit.cover,
                     //height: 160,
                     child: InkWell(
-                        onTap: onTap // adicionar nova wiget para navegar
+                        onTap: onTap 
                         ),
                   ),
                 ),
@@ -99,27 +99,19 @@ Widget buildCard({
 }
 
 class CardItem {
-  final String image;
+  final String image; 
   final String title;
-  // final String text;
   final void Function(BuildContext context)? onTap;
-  // String selectedText; // Propriedade para o texto selecionado
-  String? text;
-  bool isSelected;
-  bool isTipo;
-  //void Function()? onTap;
+  String? text; // representa o texto selecionado (para o caso dos filtros) 
+  bool isSelected; // Para colocar "Selecionado" em baixo do card (para o caso "tipo de refeicao" e "categorias")
+  bool isTipo; // para sabermos se estamos a tratar dos dados dos filtros ou das refeicoes e categorias
 
   CardItem({
     required this.image,
     required this.title,
-     this.text,
+    this.text,
     this.onTap,
     this.isSelected = false,
     this.isTipo = false,
-    //     required this.selectedText, // Adiciona a propriedade selectedText
-
-    //required this.onTap,
   });
-
-  // String get text => selectedText; // Retorna o valor de selectedText em text
-}
+  }

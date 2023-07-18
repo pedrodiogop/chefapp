@@ -3,11 +3,12 @@ import 'package:chefapp/features/rowscrool/rowscroll.dart';
 import 'package:chefapp/core/constants/constants.dart';
 
 class RowScroolFiltros extends StatefulWidget {
+  // devovem o numero selecionado para cada filtro 
   final void Function(int selectedFilter)? onFilterSelectedPreco;
   final void Function(int selectedFilter)? onFilterSelectedTempo;
     final void Function(int selectedFilter)? onFilterSelectedCalorias;
-
   final void Function(int selectedFilter)? onFilterSelectedGostos;
+  //
 
   const RowScroolFiltros({Key? key, this.onFilterSelectedPreco,this.onFilterSelectedTempo,this.onFilterSelectedCalorias,this.onFilterSelectedGostos}) : super(key: key);
 
@@ -17,15 +18,16 @@ class RowScroolFiltros extends StatefulWidget {
 
 class _RowScroolFiltrosState extends State<RowScroolFiltros> {
   late List<CardItem> items;
-  String selectedText = '20'; // New property to store the selected value
+  String selectedText = '20';
 
   @override
   void initState() {
     super.initState();
 
+    // criacao dos Card para representarem os filtros
     items = [
       CardItem(
-        image: Constants.pequenoalmoco,
+        image: Constants.tempo,
         title: 'Tempo',
         text: 'Não selecionado',
         onTap: (context) {
@@ -38,11 +40,9 @@ class _RowScroolFiltrosState extends State<RowScroolFiltros> {
                   ListTile(
                     title: const Text('Indiferente'),
                     onTap: () {
-                      // Opção "Indiferente" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
-                        items[0].text = 'Indiferente';
+                        items[0].text = 'Indiferente'; 
                       });
                       widget.onFilterSelectedTempo?.call(10000000000000000);
                     },
@@ -50,8 +50,6 @@ class _RowScroolFiltrosState extends State<RowScroolFiltros> {
                   ListTile(
                     title: const Text('< 30 min'),
                     onTap: () {
-                      // Opção "< 5 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
                         items[0].text = '< 30 min';
@@ -62,8 +60,6 @@ class _RowScroolFiltrosState extends State<RowScroolFiltros> {
                   ListTile(
                     title: const Text('< 60 min'),
                     onTap: () {
-                      // Opção "< 10 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
                         items[0].text = '< 60 min';
@@ -74,8 +70,6 @@ class _RowScroolFiltrosState extends State<RowScroolFiltros> {
                   ListTile(
                     title: const Text('< 90 min'),
                     onTap: () {
-                      // Opção "< 10 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
                         items[0].text = '< 90 min';
@@ -86,8 +80,6 @@ class _RowScroolFiltrosState extends State<RowScroolFiltros> {
                   ListTile(
                     title: const Text('< 120 min'),
                     onTap: () {
-                      // Opção "< 10 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
                         items[0].text = '< 120 min';
@@ -95,7 +87,6 @@ class _RowScroolFiltrosState extends State<RowScroolFiltros> {
                      widget.onFilterSelectedTempo?.call(120);
                     },
                   ),
-                  // Adicione mais opções de tempo aqui
                 ],
               );
             },
@@ -103,7 +94,7 @@ class _RowScroolFiltrosState extends State<RowScroolFiltros> {
         },
       ),
       CardItem(
-        image: Constants.pequenoalmoco,
+        image: Constants.calorias,
         title: 'Calorias',
         text: 'Não selecionado',
         onTap: (context) {
@@ -116,8 +107,6 @@ class _RowScroolFiltrosState extends State<RowScroolFiltros> {
                   ListTile(
                     title: const Text('Indiferente'),
                     onTap: () {
-                      // Opção "Indiferente" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
                         items[1].text = 'Indiferente';
@@ -126,54 +115,45 @@ class _RowScroolFiltrosState extends State<RowScroolFiltros> {
                     },
                   ),
                   ListTile(
-                    title: const Text('< 30 min'),
+                    title: const Text('< 200 kcal'),
                     onTap: () {
-                      // Opção "< 5 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
-                        items[1].text = '< 30 min';
+                        items[1].text = '< 200 kcal';
                       });
-                      widget.onFilterSelectedCalorias?.call(30);
+                      widget.onFilterSelectedCalorias?.call(200);
                     },
                   ),
                   ListTile(
-                    title: const Text('< 60 min'),
+                    title: const Text('< 400 kcal'),
                     onTap: () {
-                      // Opção "< 10 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
-                        items[1].text = '< 60 min';
+                        items[1].text = '< 400 kcal';
                       });
-                      widget.onFilterSelectedCalorias?.call(60);
+                      widget.onFilterSelectedCalorias?.call(400);
                     },
                   ),
                   ListTile(
-                    title: const Text('< 90 min'),
+                    title: const Text('< 700 kcal'),
                     onTap: () {
-                      // Opção "< 10 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
-                        items[1].text = '< 90 min';
+                        items[1].text = '< 700 kcal';
                       });
-                     widget.onFilterSelectedCalorias?.call(90);
+                     widget.onFilterSelectedCalorias?.call(700);
                     },
                   ),
                   ListTile(
-                    title: const Text('< 120 min'),
+                    title: const Text('< 1000 kcal'),
                     onTap: () {
-                      // Opção "< 10 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
-                        items[1].text = '< 120 min';
+                        items[1].text = '< 1000 kcal';
                       });
-                    widget.onFilterSelectedCalorias?.call(120);
+                    widget.onFilterSelectedCalorias?.call(1000);
                     },
                   ),
-                  // Adicione mais opções de tempo aqui
                 ],
               );
             },
@@ -181,7 +161,7 @@ class _RowScroolFiltrosState extends State<RowScroolFiltros> {
         },
       ),
       CardItem(
-        image: Constants.pequenoalmoco,
+        image: Constants.preco,
         title: 'Preço',
         text: 'Não selecionado',
         onTap: (context) {
@@ -194,8 +174,6 @@ class _RowScroolFiltrosState extends State<RowScroolFiltros> {
                   ListTile(
                     title: const Text('Indiferente'),
                     onTap: () {
-                      // Opção "Indiferente" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
                         items[2].text = 'Indiferente';
@@ -204,54 +182,45 @@ class _RowScroolFiltrosState extends State<RowScroolFiltros> {
                     },
                   ),
                   ListTile(
-                    title: const Text('< 30 min'),
+                    title: const Text('< 10€'),
                     onTap: () {
-                      // Opção "< 5 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
-                        items[2].text = '< 30 min';
+                        items[2].text = '< 10€';
                       });
-                      widget.onFilterSelectedPreco?.call(30);
+                      widget.onFilterSelectedPreco?.call(10);
                     },
                   ),
                   ListTile(
-                    title: const Text('< 60 min'),
+                    title: const Text('< 25€'),
                     onTap: () {
-                      // Opção "< 10 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
-                        items[2].text = '< 60 min';
+                        items[2].text = '< 25€';
                       });
-                      widget.onFilterSelectedPreco?.call(60);
+                      widget.onFilterSelectedPreco?.call(25);
                     },
                   ),
                   ListTile(
-                    title: const Text('< 90 min'),
+                    title: const Text('< 50€'),
                     onTap: () {
-                      // Opção "< 10 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
-                        items[2].text = '< 90 min';
+                        items[2].text = '< 50€';
                       });
-                      widget.onFilterSelectedPreco?.call(90);
+                      widget.onFilterSelectedPreco?.call(50);
                     },
                   ),
                   ListTile(
-                    title: const Text('< 120 min'),
+                    title: const Text('< 100€'),
                     onTap: () {
-                      // Opção "< 10 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
-                        items[2].text = '< 120 min';
+                        items[2].text = '< 100€';
                       });
-                      widget.onFilterSelectedPreco?.call(120);
+                      widget.onFilterSelectedPreco?.call(100);
                     },
                   ),
-                  // Adicione mais opções de tempo aqui
                 ],
               );
             },
@@ -259,7 +228,7 @@ class _RowScroolFiltrosState extends State<RowScroolFiltros> {
         },
       ),
 CardItem(
-        image: Constants.pequenoalmoco,
+        image: Constants.like,
         title: 'Gostos',
         text: 'Não selecionado',
         onTap: (context) {
@@ -272,8 +241,6 @@ CardItem(
                   ListTile(
                     title: const Text('Indiferente'),
                     onTap: () {
-                      // Opção "Indiferente" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
                         items[3].text = 'Indiferente';
@@ -282,54 +249,45 @@ CardItem(
                     },
                   ),
                   ListTile(
-                    title: const Text('< 30 min'),
+                    title: const Text('> 2 gostos'),
                     onTap: () {
-                      // Opção "< 5 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
-                        items[3].text = '< 30 min';
+                        items[3].text = '> 2 gostos';
                       });
-                      widget.onFilterSelectedGostos?.call(30);
+                      widget.onFilterSelectedGostos?.call(2);
                     },
                   ),
                   ListTile(
-                    title: const Text('< 60 min'),
+                    title: const Text('> 5 gostos'),
                     onTap: () {
-                      // Opção "< 10 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
-                        items[3].text = '< 60 min';
+                        items[3].text = '> 5 gostos';
                       });
-                      widget.onFilterSelectedGostos?.call(60);
+                      widget.onFilterSelectedGostos?.call(5);
                     },
                   ),
                   ListTile(
-                    title: const Text('< 90 min'),
+                    title: const Text('> 10 gostos'),
                     onTap: () {
-                      // Opção "< 10 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
-                        items[3].text = '< 90 min';
+                        items[3].text = '> 10 gostos';
                       });
-                     widget.onFilterSelectedGostos?.call(90);
+                     widget.onFilterSelectedGostos?.call(10);
                     },
                   ),
                   ListTile(
-                    title: const Text('< 120 min'),
+                    title: const Text('> 15 gostos'),
                     onTap: () {
-                      // Opção "< 10 min" selecionada
-                      // Faça alguma coisa
                       Navigator.pop(context); // Feche o modal
                       setState(() {
-                        items[3].text = '< 120 min';
+                        items[3].text = '> 15 gostos';
                       });
-                    widget.onFilterSelectedGostos?.call(120);
+                    widget.onFilterSelectedGostos?.call(15);
                     },
                   ),
-                  // Adicione mais opções de tempo aqui
                 ],
               );
             },
@@ -339,23 +297,20 @@ CardItem(
     ];
   }
 
+  
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 150,
       child: ListView.separated(
         padding: const EdgeInsets.all(16),
-        itemBuilder: (context, index) => buildCard(
+        itemBuilder: (context, index) => buildCard(  // construcao da linha dos filtros
           items: items[index],
           containerWidth: 100,
           textfont: 13,
           context: context,
           textfontabaixo: 13,
-          selectedText: selectedText, // Passa o valor de selectedText
-
-          //  onTap: () {
-          //   items[index].onTap(context);
-          // },
+          selectedText: selectedText,
         ),
         separatorBuilder: (context, _) => const SizedBox(width: 12),
         itemCount: items.length,

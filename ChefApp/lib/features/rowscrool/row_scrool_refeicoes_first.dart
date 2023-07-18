@@ -27,35 +27,35 @@ class _RowScroolRefeicaoFirstState extends State<RowScroolRefeicaoFirst> {
     ),
     CardItem(
       text: '',
-      image: Constants.pequenoalmoco,
+      image: Constants.lunch,
       title: 'Almoço/Jantar',
       onTap: (context) {
 navigateToRefeicao(context,1);      },
     ),
     CardItem(
       text: '',
-      image: Constants.pequenoalmoco,
+      image: Constants.lanche,
       title: 'Lanche',
       onTap: (context) {
 navigateToRefeicao(context,2);      },
     ),
     CardItem(
       text: '',
-      image: Constants.pequenoalmoco,
+      image: Constants.ceia,
       title: 'Ceia',
       onTap: (context) {
 navigateToRefeicao(context,3);      },
     ),
     CardItem(
       text: '',
-      image: Constants.pequenoalmoco,
+      image: Constants.bebidas,
       title: 'Bebidas',
       onTap: (context) {
 navigateToRefeicao(context,4);      },
     ),
     CardItem(
       text: '',
-      image: Constants.pequenoalmoco,
+      image: Constants.sobremesa,
       title: 'Sobremesa',
       onTap: (context) {
 navigateToRefeicao(context,5);      },

@@ -45,28 +45,22 @@ class _MyAppState extends ConsumerState<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    
     return ref.watch(authStateChangeProvider).when(
           data: (data) => MaterialApp.router(
             debugShowCheckedModeBanner: false,
             title: 'Chef App',
-            //theme: Pallete.lightModeAppTheme, // cores da aplicaçao
             routerDelegate: RoutemasterDelegate(
               routesBuilder: (context) {
-                //print('antes de entrar no if');
                 if (data != null) {
-  //print('dentro do if');
                     getData(ref, data);
                     if(userModel != null){
                       return loggedInRoute;
                     }
                 }
-               // print('fora do if');
                 return loggedOutRoute;
               },
             ),
             routeInformationParser: const RoutemasterParser(),
-            //home: const LoginScreen(), // para onde navega
           ),
           error: (error, stackTrace) => ErrorText(error: error.toString()),
           loading: () => const Loader(),

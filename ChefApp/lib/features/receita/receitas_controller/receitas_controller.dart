@@ -1,17 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:uuid/uuid.dart';
-
 import 'package:chefapp/core/providers/storage_repository_provider.dart';
 import 'package:chefapp/features/auth/controleer/auth_controller.dart';
 import 'package:chefapp/models/receita_model.dart';
-
 import '../../../core/utils.dart';
 import '../../../models/coment_model.dart';
+import '../../../models/receitasparams_model.dart';
 import '../receita_repository/receita_repository.dart';
 
 final receitaControllerProvider =
@@ -51,16 +49,25 @@ final getNumeroReceitasGuardadas = StreamProvider.family((ref, String userid) {
   return postController.getNumeroReceitasGuardadas(userid);
 });
 
-
 final getLikesUsuarioProvider = StreamProvider.family((ref, String userid) {
   final postController = ref.watch(receitaControllerProvider.notifier);
   return postController.getLikesUsuario(userid);
 });
 
-
-final getReceitasRefeicaoProvider = StreamProvider.family<List<Receita>, ReceitasParams>((ref, ReceitasParams params) {
+final getReceitasRefeicaoProvider =
+    StreamProvider.family<List<Receita>, ReceitasParams>(
+        (ref, ReceitasParams params) {
   final postController = ref.watch(receitaControllerProvider.notifier);
-  return postController.getReceitasRefeicao(params.tipo, params.maxPreco, params.minLikes, params.maxCalorias, params.maxtempo);
+  return postController.getReceitasRefeicao(params.tipo, params.maxPreco,
+      params.minLikes, params.maxCalorias, params.maxtempo);
+});
+
+final getReceitasCategoriasProvider =
+    StreamProvider.family<List<Receita>, ReceitasParams>(
+        (ref, ReceitasParams params) {
+  final postController = ref.watch(receitaControllerProvider.notifier);
+  return postController.getReceitasCategorias(params.tipo, params.maxPreco, params.minLikes,
+      params.maxCalorias, params.maxtempo);
 });
 
 final getReceitaMaisLikesProvider =
@@ -69,94 +76,11 @@ final getReceitaMaisLikesProvider =
   return postController.getReceitaMaisLikes();
 });
 
-
 final getAllReceitasaseguirProvider =
     StreamProvider.family<List<Receita>?, String>((ref, String userid) {
   final postController = ref.watch(receitaControllerProvider.notifier);
   return postController.getAllReceitasaseguir(userid);
 });
-
-
-
-class ReceitasParams {
-  final String tipo;
-  final int maxPreco;
-  final int minLikes;
-  final int maxCalorias;
-  final int maxtempo;
-
-  const ReceitasParams({
-    required this.tipo,
-    required this.maxPreco,
-    required this.minLikes,
-    required this.maxCalorias,
-    required this.maxtempo,
-  });
-
-
-  ReceitasParams copyWith({
-    String? tipo,
-    int? maxPreco,
-    int? minLikes,
-    int? maxCalorias,
-    int? maxtempo,
-  }) {
-    return ReceitasParams(
-      tipo: tipo ?? this.tipo,
-      maxPreco: maxPreco ?? this.maxPreco,
-      minLikes: minLikes ?? this.minLikes,
-      maxCalorias: maxCalorias ?? this.maxCalorias,
-      maxtempo: maxtempo ?? this.maxtempo,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tipo': tipo,
-      'maxPreco': maxPreco,
-      'minLikes': minLikes,
-      'maxCalorias': maxCalorias,
-      'maxtempo': maxtempo,
-    };
-  }
-
-  factory ReceitasParams.fromMap(Map<String, dynamic> map) {
-    return ReceitasParams(
-      tipo: map['tipo'] as String,
-      maxPreco: map['maxPreco'] as int,
-      minLikes: map['minLikes'] as int,
-      maxCalorias: map['maxCalorias'] as int,
-      maxtempo: map['maxtempo'] as int,
-    );
-  }
-  @override
-  String toString() {
-    return 'ReceitasParams(tipo: $tipo, maxPreco: $maxPreco, minLikes: $minLikes, maxCalorias: $maxCalorias, maxtempo: $maxtempo)';
-  }
-
-  @override
-  bool operator ==(covariant ReceitasParams other) {
-    if (identical(this, other)) return true;
-  
-    return 
-      other.tipo == tipo &&
-      other.maxPreco == maxPreco &&
-      other.minLikes == minLikes &&
-      other.maxCalorias == maxCalorias &&
-      other.maxtempo == maxtempo;
-  }
-
-  @override
-  int get hashCode {
-    return tipo.hashCode ^
-      maxPreco.hashCode ^
-      minLikes.hashCode ^
-      maxCalorias.hashCode ^
-      maxtempo.hashCode;
-  }
-}
-
-
 
 class ReceitaController extends StateNotifier<bool> {
   final ReceitaRepository _receitaRepository;
@@ -225,13 +149,10 @@ class ReceitaController extends StateNotifier<bool> {
     _receitaRepository.likeReceita(receita, uid);
   }
 
-    void guardarReceita(Receita receita) async {
+  void guardarReceita(Receita receita) async {
     final uid = _ref.read(userProvider)!.uid;
     _receitaRepository.guardarReceita(receita, uid);
   }
-
-
-
 
   Stream<Receita> getReceitaByid(String receitaId) {
     return _receitaRepository.getReceitaByid(receitaId);
@@ -261,7 +182,6 @@ class ReceitaController extends StateNotifier<bool> {
     return _receitaRepository.getAllReceitas();
   }
 
-
   Stream<List<Receita>> getReceitaGuardadosString(String userid) {
     // print('getReceitaGuardados - guardados: $guardados');
     return _receitaRepository.getReceitaGuardadosString(userid);
@@ -271,24 +191,27 @@ class ReceitaController extends StateNotifier<bool> {
     return _receitaRepository.getNumeroReceitasGuardadas(userid);
   }
 
-  Stream<int> getLikesUsuario(String uid){
+  Stream<int> getLikesUsuario(String uid) {
     return _receitaRepository.getLikesUsuario(uid);
   }
 
-Stream<List<Receita>> getReceitasRefeicao(
+  Stream<List<Receita>> getReceitasRefeicao(
       String tipo, int maxPreco, int minLikes, int maxCalorias, int maxtempo) {
-            return _receitaRepository.getReceitasRefeicao(tipo,maxPreco,minLikes,maxCalorias,maxtempo);
-      }
-
-      Stream<List<Receita>> getReceitaMaisLikes() {
-        return _receitaRepository.getReceitaMaisLikes();
-      }
-
-
-       Stream<List<Receita>?> getAllReceitasaseguir(String uid) {
-    return _receitaRepository.getAllReceitasaseguir(uid);
+    return _receitaRepository.getReceitasRefeicao(
+        tipo, maxPreco, minLikes, maxCalorias, maxtempo);
   }
 
+  Stream<List<Receita>> getReceitasCategorias(
+      String tipo, int maxPreco, int minLikes, int maxCalorias, int maxtempo) {
+    return _receitaRepository.getReceitasCategorias(
+        tipo, maxPreco, minLikes, maxCalorias, maxtempo);
+  }
 
+  Stream<List<Receita>> getReceitaMaisLikes() {
+    return _receitaRepository.getReceitaMaisLikes();
+  }
 
+  Stream<List<Receita>?> getAllReceitasaseguir(String uid) {
+    return _receitaRepository.getAllReceitasaseguir(uid);
+  }
 }

@@ -9,9 +9,8 @@ import 'package:chefapp/features/perfil/perfil_repository/perfil_repository.dart
 import 'package:chefapp/features/auth/controleer/auth_controller.dart';
 import '../../../core/utils.dart';
 
-
-
-final perfilControllerProvider = StateNotifierProvider<PerfilController, bool>((ref) {
+final perfilControllerProvider =
+    StateNotifierProvider<PerfilController, bool>((ref) {
   final perfilRepository = ref.watch(perfilRepositoryProvider);
   final storageRepository = ref.watch(storageRepositoryProvider);
   return PerfilController(
@@ -21,30 +20,32 @@ final perfilControllerProvider = StateNotifierProvider<PerfilController, bool>((
   );
 });
 
-
-final getUserReceitasProvider = StreamProvider.family((ref,String uid) {
+final getUserReceitasProvider = StreamProvider.family((ref, String uid) {
   return ref.read(perfilControllerProvider.notifier).getUserReceitas(uid);
 });
 
-
-final getNumeroDeReceitasProvider = StreamProvider.family<int, String>((ref,String uid) {
+final getNumeroDeReceitasProvider =
+    StreamProvider.family<int, String>((ref, String uid) {
   return ref.read(perfilControllerProvider.notifier).getNumeroDeReceitas(uid);
 });
 
-final getAllUsersProvider =
-    StreamProvider.family((ref, _) {
+final getAllUsersProvider = StreamProvider.family((ref, _) {
   return ref.read(perfilControllerProvider.notifier).getAllUsers();
 });
 
-
-
-final getAllUsersMaisSeguidoresProvider =
-    StreamProvider.family((ref, _) {
-  return ref.read(perfilControllerProvider.notifier).getAllUsersMaisSeguidores();
+final getAllUsersMaisSeguidoresProvider = StreamProvider.family((ref, _) {
+  return ref
+      .read(perfilControllerProvider.notifier)
+      .getAllUsersMaisSeguidores();
 });
 
+final getseeSeguidoresProvider =  StreamProvider.family<List<String>?, String>((ref, String uid) {
+  return ref.read(perfilControllerProvider.notifier).seeSeguidores(uid);
+});
 
-
+final getseeASeguirProvider =  StreamProvider.family<List<String>?, String>((ref, String uid) {
+  return ref.read(perfilControllerProvider.notifier).seeaSeguir(uid);
+});
 
 class PerfilController extends StateNotifier<bool> {
   final PerfilRepository _perfilRepository;
@@ -100,23 +101,22 @@ class PerfilController extends StateNotifier<bool> {
       (l) => showSnackBar(context, l.message),
       (r) {
         // para o userProvider ter os mesmo dados que a firebase
-        _ref.read(userProvider.notifier).update((state) => user); 
+        _ref.read(userProvider.notifier).update((state) => user);
         Routemaster.of(context).pop();
       },
     );
   }
 
-     void plusoneseguidor( UserModel userausente) async {
+  void plusoneseguidor(UserModel userausente) async {
     final userpresente = _ref.read(userProvider)!;
     _perfilRepository.plusoneseguidor(userpresente, userausente);
   }
 
+  Stream<List<Receita>> getUserReceitas(String uid) {
+    return _perfilRepository.getUserReceitas(uid);
+  }
 
-Stream<List<Receita>> getUserReceitas(String uid){
-  return _perfilRepository.getUserReceitas(uid);
-}
-
- Stream<int> getNumeroDeReceitas(String uid) {
+  Stream<int> getNumeroDeReceitas(String uid) {
     return _perfilRepository.getNumeroDeReceitas(uid);
   }
 
@@ -124,8 +124,14 @@ Stream<List<Receita>> getUserReceitas(String uid){
     return _perfilRepository.getAllUsers();
   }
 
-  Stream<List<UserModel>> getAllUsersMaisSeguidores(){
+  Stream<List<UserModel>> getAllUsersMaisSeguidores() {
     return _perfilRepository.getAllUsersMaisSeguidores();
   }
 
+  Stream<List<String>> seeSeguidores(String uid) {
+    return _perfilRepository.seeSeguidores(uid);
+  }
+  Stream<List<String>> seeaSeguir(String uid) {
+    return _perfilRepository.seeaseguir(uid);
+  }
 }

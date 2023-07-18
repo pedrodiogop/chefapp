@@ -77,8 +77,38 @@ flutter:
   assets:
      - assets/images/chef.png
      - assets/images/google.png
-     - assets/images/pequeno
+     - assets/images/pequeno.jpg
      - assets/images/like.png
+     - assets/images/lunch.jpg
+     - assets/images/lanch.jpeg
+     - assets/images/bebidas.jpg
+     - assets/images/ceia.jpg
+     - assets/images/sobremesa.jpg
+     - assets/images/tempo.jpg
+     - assets/images/calorias.jpg
+     - assets/images/preco.jpg
+     - assets/images/like.png
+     - assets/images/carne.jpg
+     - assets/images/peixe.jpg
+     - assets/images/massas.jpg
+     - assets/images/rice.jpg
+     - assets/images/sushi.jpg
+     - assets/images/gluten.jpg
+     - assets/images/gym.jpg
+     - assets/images/legumes.jpg
+     - assets/images/bolacha.jpg
+     - assets/images/chocolate.jpg
+     - assets/images/gelado.jpg
+     - assets/images/kebab.jpg
+     - assets/images/pao.jpg
+     - assets/images/pizza.jpg
+     - assets/images/salada.jpg
+     - assets/images/vegan.jpg
+     - assets/images/pratomaislikes.jpg
+     - assets/images/chef.jpg
+     - assets/images/fit.jpg
+     - assets/images/fotoperfil.jpg
+     - assets/images/banner.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

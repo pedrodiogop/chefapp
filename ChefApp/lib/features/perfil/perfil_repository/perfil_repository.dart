@@ -47,41 +47,39 @@ class PerfilRepository {
               .map((e) => Receita.fromMap(e.data() as Map<String, dynamic>))
               .toList(),
         );
-  } 
-  
-Stream<int> getNumeroDeReceitas(String uid) {
-  return _receitas
-      .where('uidusuario', isEqualTo: uid)
-      .snapshots()
-      .map((snapshot) => snapshot.size);
-}
+  }
 
+  Stream<int> getNumeroDeReceitas(String uid) {
+    return _receitas
+        .where('uidusuario', isEqualTo: uid)
+        .snapshots()
+        .map((snapshot) => snapshot.size);
+  }
 
- void plusoneseguidor(UserModel userpresente, UserModel userausente) async {
-   if (userpresente.aseguir.contains(userausente.uid)) {
-     _users.doc(userpresente.uid).update({
-       'aseguir': FieldValue.arrayRemove([userausente.uid])
-     });
-     _users.doc(userausente.uid).update({
-       'seguidores': FieldValue.arrayRemove([userpresente.uid])
-     });
-        } else {
-     _users.doc(userpresente.uid).update({
-       'aseguir': FieldValue.arrayUnion([userausente.uid])
-     });
-     _users.doc(userausente.uid).update({
-       'seguidores': FieldValue.arrayUnion([userpresente.uid])
-     });
-   }
- }
+  void plusoneseguidor(UserModel userpresente, UserModel userausente) async {
+    if (userpresente.aseguir.contains(userausente.uid)) {
+      _users.doc(userpresente.uid).update({
+        'aseguir': FieldValue.arrayRemove([userausente.uid])
+      });
+      _users.doc(userausente.uid).update({
+        'seguidores': FieldValue.arrayRemove([userpresente.uid])
+      });
+    } else {
+      _users.doc(userpresente.uid).update({
+        'aseguir': FieldValue.arrayUnion([userausente.uid])
+      });
+      _users.doc(userausente.uid).update({
+        'seguidores': FieldValue.arrayUnion([userpresente.uid])
+      });
+    }
+  }
 
-
-
-      Stream<List<UserModel>> getAllUsers() {
+  Stream<List<UserModel>> getAllUsers() {
     return _users
         .orderBy('dataUltimaReceita', descending: true)
         .snapshots()
-        .map( // converter para o receitas model
+        .map(
+          // converter para o receitas model
           (event) => event.docs
               .map((e) => UserModel.fromMap(e.data() as Map<String, dynamic>))
               .toList(),
@@ -89,14 +87,21 @@ Stream<int> getNumeroDeReceitas(String uid) {
   }
 
   Stream<List<UserModel>> getAllUsersMaisSeguidores() {
-    return _users
-        .orderBy('seguidores', descending: true)
-        .snapshots()
-        .map( // converter para o receitas model
+    return _users.orderBy('seguidores', descending: true).snapshots().map(
+          // converter para o receitas model
           (event) => event.docs
               .map((e) => UserModel.fromMap(e.data() as Map<String, dynamic>))
               .toList(),
         );
   }
 
+  Stream<List<String>> seeSeguidores(String uid) {
+    return _users.doc(uid).snapshots().map((event) =>
+        (event.data() as Map<String, dynamic>)['seguidores']?.cast<String>());
+  }
+  Stream<List<String>> seeaseguir(String uid) {
+    return _users.doc(uid).snapshots().map((event) =>
+        (event.data() as Map<String, dynamic>)['aseguir']?.cast<String>());
+  }
+  
 }

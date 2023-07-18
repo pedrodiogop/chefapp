@@ -1,26 +1,23 @@
-//loggedOut
-//loggedIn
-
 import 'package:chefapp/features/auth/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:chefapp/features/home/screen/homescreen.dart';
-import 'package:chefapp/features/sugestoes/sugestoes.dart';
-import 'package:chefapp/features/sugestoes/visualizar_sugestoes.dart';
-import 'package:chefapp/features/refeicoes/refeicoes_screen.dart';
+import 'package:chefapp/features/sugestoes/screen/sugestoes.dart';
+import 'package:chefapp/features/sugestoes/screen/visualizar_sugestoes.dart';
+import 'package:chefapp/features/refeicoes/refeicoes.dart';
 import 'package:chefapp/features/categorias/categorias.dart';
 import 'package:chefapp/features/chefs/chefs.dart';
-import 'package:chefapp/features/perfil/perfil_screen.dart';
-import 'package:chefapp/features/perfil/perfil_editar.dart';
-
+import 'package:chefapp/features/perfil/screens/perfil_screen.dart';
+import 'package:chefapp/features/perfil/screens/perfil_editar.dart';
 import 'features/estatisticas/chef_com_mais_seguidores.dart';
-import 'features/estatisticas/estastisticas.dart';
 import 'features/estatisticas/prato_mais_gostos.dart';
-import 'features/perfil/guardados_perfil.dart';
-import 'features/publicacao/publicacao_chefs/publicacao_chefs.dart';
-import 'features/publicacao/publicacao_recentres/publicacao_recentes.dart';
-import 'features/receita/criar_receita.dart';
-import 'features/receita/receita_solo.dart';
+import 'features/perfil/screens/guardados_perfil.dart';
+import 'features/perfil/screens/see_aseguir.dart';
+import 'features/perfil/screens/see_seguidores.dart';
+import 'features/publicacao/publicacao_chefs.dart';
+import 'features/publicacao/publicacao_recentes.dart';
+import 'features/receita/screen/criar_receita.dart';
+import 'features/receita/screen/receita_solo.dart';
 
 final loggedOutRoute = RouteMap(routes: {
   '/': (_) => const MaterialPage(child: LoginScreen()),
@@ -37,7 +34,10 @@ final loggedInRoute = RouteMap(routes: {
           indexTipo: int.parse(routeData.pathParameters['indexTipo']!),
         ),
       ),
-  '/categorias': (_) => const MaterialPage(child: Categorias()),
+  '/categorias/:indexTipo': (routeData) => MaterialPage(
+    child: Categorias(
+      indexTipo: int.parse(routeData.pathParameters['indexTipo']!),
+    ),),
   '/chefs': (_) => const MaterialPage(child: Chefs()),
   '/perfil/:uid': (routeData) => MaterialPage(
           child: UserProfileScreen(
@@ -57,9 +57,12 @@ final loggedInRoute = RouteMap(routes: {
       ),
   '/perfilguardar': (_) => const MaterialPage(child: GuardadosPerfil()),
   '/publicacaorecentes': (_) => const MaterialPage(child: PublicaoRecentes()),
-  '/estatisticas': (_) => const MaterialPage(child: Estatisticas()),
+  // '/estatisticas': (_) => const MaterialPage(child: Estatisticas()),
   '/pratomaislikes': (_) => const MaterialPage(child: PratoMaisLikes()),
   '/chefmaisseguidores': (_) =>
       const MaterialPage(child: ChefsComMaisSeguidores()),
   '/publicacaoSeguidores': (_) => const MaterialPage(child: PublicaoSeguidores()),
-});
+    '/seeSeguidores': (_) => const MaterialPage(child: SeeSeguidores()),
+    '/aSeguir': (_) => const MaterialPage(child: ASeguir()),
+
+  });

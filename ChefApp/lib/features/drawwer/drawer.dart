@@ -12,7 +12,7 @@ class Drawwer extends StatelessWidget {
     return Drawer(
       child: SafeArea(
           child: Column(
-        // crossAxisAlignment: CrossAxisAlignment.stretch,
+        //crossAxisAlignment: CrossAxisAlignment.stretch,
         children: const [
            DrawerProfile(),
            SizedBox(height: 8),

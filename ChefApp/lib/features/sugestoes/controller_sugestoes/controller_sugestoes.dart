@@ -9,7 +9,6 @@ import 'package:chefapp/models/usersugestao_model.dart';
 import 'package:uuid/uuid.dart';
 
 
-
 final allSugestoesProvider = StreamProvider((ref) {
   final sugestaoController = ref.watch(sugestaoControllerProvider.notifier);
   return sugestaoController.getAllSugestoes();
@@ -24,21 +23,8 @@ final sugestaoControllerProvider =
 
 final userSugestaoProvider = StreamProvider<List<UserSugestaoModel>>((ref) {
   final sugestaoController = ref.watch(sugestaoControllerProvider.notifier);
-  return sugestaoController.getUserSugestao(ref); // pass the `ref` argument here 
+  return sugestaoController.getUserSugestao(ref); 
 });
-
-//final sugestoesComInformacoesProvider = StreamProvider((ref) {
-//  final sugestaoController = ref.watch(sugestaoControllerProvider.notifier);
-//  final sugestoesComInformacoes = sugestaoController.;
-//  return sugestoesComInformacoes;
-//});
-
-//final sugestoesComInformacoesProvider = StreamProvider<List<UserSugestaoModel>>((ref) {
-//  final sugestoesComInformacoes = SugestoesController.getSugestoesComInformacoes(ref);
-//
-//  return sugestoesComInformacoes;
-//});
-//
 
 //StateNotifier -> serve para a barra de login
 class SugestoesController extends StateNotifier<bool> {
@@ -75,58 +61,11 @@ String newDocId = const Uuid().v4();
     _sugestoesRepository.likeSugestao(sugestao, uid);
   }
 
-
   Stream<List<SugestaoModel>> getAllSugestoes() {
-    // final uid = _ref.read(userProvider)!.uid; //
     return _sugestoesRepository.getAllSugestoes();
   }
 
     Stream<List<UserSugestaoModel>> getUserSugestao (Ref ref) {
-    // final uid = _ref.read(userProvider)!.uid; //
     return _sugestoesRepository.getUserSugestao(ref);
   }
-
-
-
-
-
-//final sugestoesComInformacoesProvider = Provider<List<UserSugestaoModel>>((ref) {
-//  final sugestoes = ref.watch(allSugestoesProvider).asData?.value ?? [];
-//  final userDataProvider = ref.watch(getUserDataProvider);
-//
-//  final sugestoesComInformacoes = sugestoes.map((sugestao) {
-//    final user = userDataProvider[sugestao.uid];
-//
-//    final userSugestao = UserSugestaoModel(
-//      sugestaoModel: sugestao,
-//      userModel: user,
-//    );
-//
-//    return userSugestao;
-//  }).toList();
-//
-//  return sugestoesComInformacoes;
-//});
-
-//static List<UserSugestaoModel> getSugestoesComInformacoes(Ref ref) {
-//  final sugestoes = ref.watch(allSugestoesProvider).asData?.value ?? [];
-//
-//
-//  final sugestoesComInformacoes = sugestoes.map((sugestao) {
-//    final userSugestaoprovider = ref.read(getUserDataProvider(sugestao.uid)).asData?.value;
-//
-//    final userSugestao = UserSugestaoModel(
-//      sugestaoModel: sugestao,
-//      userModel: userSugestaoprovider,
-//    );
-//
-//    return userSugestao;
-//  }).toList();
-//
-//  return sugestoesComInformacoes;
-//}
-
-
-
-
 }
